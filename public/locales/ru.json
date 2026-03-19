@@ -1,5 +1,23 @@
-{
-  "i18n": {
-    "header": "Нейросети"
+﻿{
+  "common": {
+    "appName": "Шаблон TG Mini App",
+    "subtitle": "Минимальный старт с маршрутизацией и i18n"
+  },
+  "nav": {
+    "home": "Главная",
+    "about": "О шаблоне",
+    "settings": "Настройки"
+  },
+  "home": {
+    "title": "Добро пожаловать",
+    "description": "Эта страница показывает базовую архитектуру для нового Telegram Mini App."
+  },
+  "about": {
+    "title": "О шаблоне",
+    "description": "Подключены feature-sliced структура, Next.js App Router и next-intl для быстрого старта."
+  },
+  "settings": {
+    "title": "Настройки",
+    "description": "Используй переключатель языка и адаптируй дефолты проекта перед реализацией фич."
   }
 }

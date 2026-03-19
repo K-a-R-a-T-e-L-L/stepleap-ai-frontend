@@ -1,24 +1,30 @@
-"use client";
-import { setLocale } from "@/core/i18n/locale";
+﻿"use client";
+
 import { useDidMount } from "@/hooks/useDidMount";
-import LoadingSpinner from "@/components/ui/LoadingSpinner";
-import Wrapper from "@/components/layout/Wrapper";
+import ReactQueryProvider from "@/processes/providers/ReactQueryProvider";
+import { setLocale } from "@/shared/lib/i18n/locale";
+import LoadingSpinner from "@/shared/ui/LoadingSpinner";
+import Wrapper from "@/widgets/layout/Wrapper";
+import AppShell from "@/widgets/layout/AppShell";
+import ErrorNotificationProvider from "@/processes/providers/ErrorNotificationProvider";
 import { initData, useSignal } from "@tma.js/sdk-react";
 import { ReactNode, useEffect } from "react";
-import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
-import ErrorNotificationProvider from "@/components/providers/ErrorNotificationProvider";
 
 const ContentView = ({ children }: { children: ReactNode }) => {
   const initDataUser = useSignal(initData.user);
 
   useEffect(() => {
-    initDataUser && setLocale(initDataUser.language_code);
+    if (initDataUser?.language_code) {
+      void setLocale(initDataUser.language_code);
+    }
   }, [initDataUser]);
 
   return (
     <ReactQueryProvider>
       <ErrorNotificationProvider>
-          <Wrapper bgColor="black">{children}</Wrapper>
+        <Wrapper bgColor="#0b1220">
+          <AppShell>{children}</AppShell>
+        </Wrapper>
       </ErrorNotificationProvider>
     </ReactQueryProvider>
   );
@@ -27,5 +33,5 @@ const ContentView = ({ children }: { children: ReactNode }) => {
 export default function ClientLayout({ children }: { children: ReactNode }) {
   const didMount = useDidMount();
 
-  return didMount ? <ContentView children={children} /> : <LoadingSpinner />;
+  return didMount ? <ContentView>{children}</ContentView> : <LoadingSpinner />;
 }

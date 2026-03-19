@@ -1,13 +1,5 @@
-"use client";
-import { useTranslations } from "next-intl";
-import { PageContainer } from "@/components/layout/Page";
+﻿import HomePage from "@/widgets/pages/HomePage";
 
-export default function Home() {
-  const t = useTranslations("i18n");
-
-  return (
-    <PageContainer back={false}>
-      {'<HomeScreen />'}
-    </PageContainer>
-  );
+export default function Page() {
+  return <HomePage />;
 }

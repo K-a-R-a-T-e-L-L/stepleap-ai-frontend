@@ -1,20 +1,23 @@
 "use client";
 
 import { Select } from "@mantine/core";
+import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { FC } from "react";
 
-import { localesMap } from "@/core/i18n/config";
-import { setLocale } from "@/core/i18n/locale";
-import { Locale } from "@/core/i18n/types";
+import { localesMap } from "@/shared/lib/i18n/config";
+import { setLocale } from "@/shared/lib/i18n/locale";
+import { Locale } from "@/shared/lib/i18n/types";
 
 export const LocaleSwitcher: FC = () => {
   const locale = useLocale();
+  const router = useRouter();
 
-  const onChange = (value: string | null) => {
+  const onChange = async (value: string | null) => {
     if (value) {
       const locale = value as Locale;
-      setLocale(locale);
+      await setLocale(locale);
+      router.refresh();
     }
   };
 

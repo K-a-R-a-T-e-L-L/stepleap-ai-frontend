@@ -1,7 +1,7 @@
 // Эмуляция tg окружения для dev режима
 import { retrieveLaunchParams } from "@tma.js/sdk-react";
-import init from "./core/init";
-import { mockEnv } from "./lib/tg/mockEnv";
+import init from "./shared/lib/init";
+import { mockEnv } from "./shared/lib/mockEnv";
 
 mockEnv().then(() => {
   try {

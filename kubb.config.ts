@@ -3,22 +3,24 @@ import { pluginOas } from "@kubb/plugin-oas";
 import { pluginTs } from "@kubb/plugin-ts";
 import { pluginClient } from "@kubb/plugin-client";
 import { pluginReactQuery } from "@kubb/plugin-react-query";
-import {configDotenv} from 'dotenv';
+import { configDotenv } from "dotenv";
 
 configDotenv();
 
 const apiDocs =
   process.env.API_DOCS_URL || "http://localhost:3001/api-docs-json";
+const cacheBustedApiDocs = `${apiDocs}?v=${Date.now()}`;
+const openApiPath = process.env.OPENAPI_PATH || "./openapi.json";
+const sourcePath = openApiPath === "remote" ? cacheBustedApiDocs : openApiPath;
 
 export default defineConfig({
   input: {
-    path: "./openapi.json",
+    path: sourcePath,
   },
 
   root: ".",
   output: {
-    path: `${apiDocs}?v=${new Date().getTime()}`,
-    // path: "./src/shared/api",
+    path: "./src/shared/api/.generated",
     clean: true,
     extension: {
       ".ts": "",
@@ -36,7 +38,7 @@ export default defineConfig({
     }),
 
     pluginClient({
-      importPath: "../../kubb-client",
+      importPath: "@/shared/api/client",
       pathParamsType: "object",
       paramsCasing: "camelcase",
       dataReturnType: "data",
@@ -44,7 +46,7 @@ export default defineConfig({
 
     pluginReactQuery({
       client: {
-        importPath: "../../kubb-client",
+        importPath: "@/shared/api/client",
         dataReturnType: "data",
       },
       query: {

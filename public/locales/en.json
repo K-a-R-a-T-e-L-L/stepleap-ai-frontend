@@ -1,5 +1,23 @@
 {
-  "i18n": {
-    "header": "Neural networks"
+  "common": {
+    "appName": "TG Mini App Template",
+    "subtitle": "Minimal starter with routing and i18n"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "settings": "Settings"
+  },
+  "home": {
+    "title": "Welcome",
+    "description": "This page demonstrates baseline architecture for a new Telegram Mini App."
+  },
+  "about": {
+    "title": "About Template",
+    "description": "Feature-sliced structure, Next.js App Router, and next-intl are configured for quick project start."
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Use locale switcher and adapt project defaults before implementing features."
   }
 }

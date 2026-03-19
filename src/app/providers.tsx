@@ -1,4 +1,4 @@
-import { themeMantine } from "@/theme/theme";
+import { themeMantine } from "@/shared/lib/theme/theme";
 import { MantineProvider } from "@mantine/core";
 import { ReactNode } from "react";
 
