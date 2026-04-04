@@ -8,9 +8,14 @@ const ReactQueryProvider = ({ children }: { children: ReactNode }) => {
         new QueryClient({
             defaultOptions: {
                 queries: {
-                    staleTime: 0,
-                    refetchOnWindowFocus: false
-                }
+                    staleTime: 60_000,
+                    refetchOnWindowFocus: false,
+                    refetchOnReconnect: false,
+                    retry: false,
+                },
+                mutations: {
+                    retry: false,
+                },
             }
         })
     );

@@ -1,0 +1,1 @@
+{"type":"object","properties":{"episodeId":{"type":"string","example":"marketing-analytics-episode-1"},"completed":{"type":"boolean","example":true},"message":{"type":"string","example":"Эпизод отмечен как выполненный."}},"required":["episodeId","completed","message"],"x-readme-ref-name":"CompleteCareerEpisodeResponseDto"}

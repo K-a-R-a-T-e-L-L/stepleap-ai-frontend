@@ -40,4 +40,4 @@ next-env.d.ts
 certificates
 .env
 doc.json
-.generated
+.env

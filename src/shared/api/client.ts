@@ -39,12 +39,20 @@ export type ResponseErrorConfig<TError = unknown> = {
   headers: Headers;
 };
 
+export type Client = <
+  TData = unknown,
+  TError = unknown,
+  TVariables = unknown
+>(
+  config: RequestConfig<TVariables>
+) => Promise<ResponseConfig<TData>>;
+
 export default async function client<
   TData = unknown,
   TError = unknown,
   TVariables = unknown
 >(config: RequestConfig<TVariables>): Promise<ResponseConfig<TData>> {
-  const baseURL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000";
+  const baseURL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3200";
   const rawUrl = config.url ?? "";
   const url = new URL(rawUrl, baseURL.endsWith("/") ? baseURL : `${baseURL}/`);
 
@@ -73,6 +81,7 @@ export default async function client<
     body,
     signal: config.signal,
     headers,
+    credentials: "include",
   });
 
   const responseType = config.responseType ?? "json";

@@ -1,30 +1,26 @@
 ﻿"use client";
 
 import { useDidMount } from "@/hooks/useDidMount";
-import ReactQueryProvider from "@/processes/providers/ReactQueryProvider";
-import { setLocale } from "@/shared/lib/i18n/locale";
-import LoadingSpinner from "@/shared/ui/LoadingSpinner";
-import Wrapper from "@/widgets/layout/Wrapper";
-import AppShell from "@/widgets/layout/AppShell";
+import AuthSessionProvider from "@/processes/providers/AuthSessionProvider";
+import { CareerProfileProvider } from "@/processes/providers/career";
 import ErrorNotificationProvider from "@/processes/providers/ErrorNotificationProvider";
-import { initData, useSignal } from "@tma.js/sdk-react";
-import { ReactNode, useEffect } from "react";
+import ReactQueryProvider from "@/processes/providers/ReactQueryProvider";
+import LoadingSpinner from "@/shared/ui/LoadingSpinner";
+import AppShell from "@/widgets/layout/AppShell";
+import Wrapper from "@/widgets/layout/Wrapper";
+import { ReactNode } from "react";
 
 const ContentView = ({ children }: { children: ReactNode }) => {
-  const initDataUser = useSignal(initData.user);
-
-  useEffect(() => {
-    if (initDataUser?.language_code) {
-      void setLocale(initDataUser.language_code);
-    }
-  }, [initDataUser]);
-
   return (
     <ReactQueryProvider>
       <ErrorNotificationProvider>
-        <Wrapper bgColor="#0b1220">
-          <AppShell>{children}</AppShell>
-        </Wrapper>
+        <AuthSessionProvider>
+          <CareerProfileProvider>
+            <Wrapper bgColor="#0b1220">
+              <AppShell>{children}</AppShell>
+            </Wrapper>
+          </CareerProfileProvider>
+        </AuthSessionProvider>
       </ErrorNotificationProvider>
     </ReactQueryProvider>
   );

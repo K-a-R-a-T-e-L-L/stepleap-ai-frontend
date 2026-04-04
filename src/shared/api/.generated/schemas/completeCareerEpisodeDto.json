@@ -1,0 +1,1 @@
+{"type":"object","properties":{"episodeId":{"type":"string","example":"marketing-analytics-episode-1"},"trackId":{"type":"string","example":"marketing-analytics","nullable":true}},"required":["episodeId"],"x-readme-ref-name":"CompleteCareerEpisodeDto"}

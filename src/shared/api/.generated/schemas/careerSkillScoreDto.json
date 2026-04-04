@@ -1,0 +1,1 @@
+{"type":"object","properties":{"name":{"type":"string","example":"React"},"score":{"type":"number","example":82},"reason":{"type":"string","example":"Подтверждено навыками и опытом из профиля."}},"required":["name","score","reason"],"x-readme-ref-name":"CareerSkillScoreDto"}

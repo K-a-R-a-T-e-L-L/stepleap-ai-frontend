@@ -1,0 +1,1 @@
+{"type":"object","properties":{"rawInitData":{"type":"string"}},"required":["rawInitData"],"x-readme-ref-name":"TgAuthDto"}

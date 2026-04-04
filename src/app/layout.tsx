@@ -1,7 +1,5 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
-import { getLocale } from "next-intl/server";
-import { I18nProvider } from "@/shared/lib/i18n/provider";
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
 import "@mantine/core/styles.css";
 import "@/styles/globalStyles.css";
@@ -18,17 +16,14 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
-  const locale = await getLocale();
 
   return (
-    <html lang={locale} {...mantineHtmlProps} suppressHydrationWarning>
+    <html lang={'ru'} {...mantineHtmlProps} suppressHydrationWarning>
       <head>
         <ColorSchemeScript />
       </head>
       <body>
-        <I18nProvider>
           <AppProviders>{children}</AppProviders>
-        </I18nProvider>
       </body>
     </html>
   );
