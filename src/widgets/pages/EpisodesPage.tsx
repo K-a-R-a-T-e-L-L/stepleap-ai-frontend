@@ -201,14 +201,9 @@ export default function EpisodesPage() {
               <Text fw={700} c="white">
                 {episode.order}. {episode.title}
               </Text>
-              <Group gap={8}>
-                <Badge tt="lowercase" color={isActionable ? "teal" : "grape"} variant="light">
-                  {isActionable ? "текущий" : "шаг"}
-                </Badge>
-                <Badge tt="lowercase" color="blue" variant="light">
-                  {episode.completed ? "завершен" : episode.status}
-                </Badge>
-              </Group>
+              <Badge tt="lowercase" color={isActionable ? "teal" : episode.completed ? "green" : "blue"} variant="light">
+                {episode.completed ? "завершен" : isActionable ? "текущий" : "доступно"}
+              </Badge>
             </Group>
             <Text size="sm" c="rgba(212,225,255,0.82)">
               {episode.description}

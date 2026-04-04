@@ -50,11 +50,6 @@ export default function VacancyPage() {
       <Text c="rgba(223,231,255,0.8)">
         Лента вакансий формируется из AI-рейтинга направлений и обновляется после каждого эпизода.
       </Text>
-      {!accessToken ? (
-        <Card radius="lg" p="md" style={{ background: "rgba(58, 20, 28, 0.72)", border: "1px solid rgba(255, 172, 172, 0.24)" }}>
-          <Text c="rgba(255,216,216,0.9)">Нет активной сессии. Для загрузки вакансий открой Mini App из Telegram.</Text>
-        </Card>
-      ) : null}
       {!onboardingSubmitted ? (
         <Card radius="lg" p="md" style={{ background: "rgba(15, 24, 56, 0.8)", border: "1px solid rgba(165, 189, 250, 0.24)" }}>
           <Text c="rgba(220,232,255,0.82)">Сначала заполни анкету и нажми «Продолжить», после этого загрузятся персональные вакансии.</Text>
